@@ -315,11 +315,12 @@
                 var audio = new Audio('sounds/success.wav');
                 audio.play();
             },
-            openKeyBoard() {
-                document.getElementById("app").click();
+            openKeyboard() {
+                console.log("Hi I'm Here !!!!");
+                document.getElementById("image-div").click();
                 setTimeout(function () {
-                    document.getElementById("app").focus()
-                }, 1)
+                    document.getElementById("image-div").focus()
+                }, 1);
                 return "keyboard open";
             }
         }
