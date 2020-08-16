@@ -286,12 +286,7 @@
             },
             chooseCategory(category) {
                 if (category === 'מקלדת') {
-                    console.log("היי אני פה");
-                    document.getElementById("keyboard").click();
-                    setTimeout(function () {
-                        document.getElementById("keyboard").focus()
-                    }, 1);
-                    return "keyboard open";
+                    document.getElementById("keyboard").focus();
                 } else {
                     this.selectedCategory = category;
                     this.newWord();
