@@ -84,14 +84,13 @@
 
     <div class="main column is-three-quarters has-background-white-ter">
         <div id="image-div">
-            <button @click="openKeyboard()">מקלדת</button>
-
             <img :src='"images/" + category + "/" + currentWord + ".svg"'>
         </div>
 
         <div id="text-div">
+            <input type="text" id="keyboard" style="display: none;">
             <div id="gray-text">{{ currentWord }}</div>
-            <div id="black-text"><span style="color: black">{{ filled }}</span><span style="color: sandybrown">{{ currentLetter }}</span><span
+            <div id="black-text"><span style="color: forestgreen">{{ filled }}</span><span style="color: sandybrown">{{ currentLetter }}</span><span
                     style="color: transparent">{{ restOfWord }}</span></div>
         </div>
 
@@ -196,7 +195,10 @@
                     "icon": "אוטו",
                     "name": "תחבורה"
                 },
-
+                {
+                    "icon": "מקלדת",
+                    "name": "מקלדת"
+                }
             ],
             selectedCategory: "אוכל",
             category: "",
@@ -283,8 +285,17 @@
 
             },
             chooseCategory(category) {
-                this.selectedCategory = category;
-                this.newWord();
+                if (category === 'מקלדת') {
+                    console.log("היי אני פה");
+                    document.getElementById("keyboard").click();
+                    setTimeout(function () {
+                        document.getElementById("keyboard").focus()
+                    }, 1);
+                    return "keyboard open";
+                } else {
+                    this.selectedCategory = category;
+                    this.newWord();
+                }
             },
             playBell() {
                 var audio = new Audio('sounds/bell.wav');
@@ -314,14 +325,6 @@
             playSuccess() {
                 var audio = new Audio('sounds/success.wav');
                 audio.play();
-            },
-            openKeyboard() {
-                console.log("Hi I'm Here !!!!");
-                document.getElementById("image-div").click();
-                setTimeout(function () {
-                    document.getElementById("image-div").focus()
-                }, 1);
-                return "keyboard open";
             }
         }
     });
